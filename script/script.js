@@ -65,7 +65,6 @@ const popupCall = () => {
     });
 
 };
-
 popupCall();
 
 const formsValidate = () => {
@@ -87,8 +86,207 @@ const formsValidate = () => {
   });
 
 };
-
 formsValidate();
+
+const sendForm = () => {
+
+  const errorMassage = 'Ошибка',
+        loadMassage = 'Идет отправка',
+        successMassage = 'Отправлено';
+
+  const forms = document.querySelectorAll('form'),
+        popup = document.querySelector('.popup');
+        
+
+  const statusMassage = document.createElement('div');
+  statusMassage.style.cssText = 'font-size: 2rem; color: white';
+
+  forms.forEach((form) => {
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      form.appendChild(statusMassage);
+      statusMassage.textContent = loadMassage;
+
+      const formData = new FormData(form);
+      
+      let body = {};
+    
+      formData.forEach((val, key) => {
+        body[key] = val;
+      });
+
+      const good = (response) => {
+        if (response.status !== 200) {
+          throw new Error('status network not 200');  
+        }
+        statusMassage.style.cssText = 'color: green';
+        statusMassage.textContent = successMassage;
+        setTimeout (() => {
+          statusMassage.remove();
+          setTimeout (() => {
+            popup.style.display = 'none';
+          }, 2000);
+        }, 2000);
+      };
+
+      const notGood = (error) => {
+        statusMassage.style.cssText = 'color: red';
+        statusMassage.textContent = errorMassage;
+        setTimeout (() => {
+          statusMassage.remove();
+          setTimeout (() => {
+            popup.style.display = 'none';
+          }, 2000);
+        }, 2000);
+      };
+
+      postData(body)
+        .then(good)
+        .catch(notGood);
+
+      
+
+      form.reset();
+
+    });
+
+  });
+
+  const postData = (body) => {
+    return fetch ('./server.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+      credentials: 'include' 
+    });
+
+    
+  };
+};
+sendForm();
+
+// const allAccordionMove = () => {
+
+//   const tabHeader = document.querySelectorAll('.panel-group'),
+//         tab = document.querySelectorAll('.panel-heading'),
+//         tabContent = document.querySelectorAll('.panel-collapse'),
+//         constructBtn = document.querySelectorAll('.construct-btn');
+  
+//   const toggleTabContent = (index) => {
+//     for (let i = 0; i < tabContent.length; i++) {
+//       if (index === i) {
+//         tabContent[i].classList.add('in');
+//       } else {
+//         tabContent[i].classList.remove('in');
+//       }
+//     }
+//   };
+  
+//   tabHeader.forEach((elem) => {
+//     elem.addEventListener('click', (event) => {
+
+//       let target = event.target.closest('.panel-heading, .construct-btn');
+          
+      
+//         if (target) {
+//           tab.forEach((item, i) => {
+//             if (item === target) {
+//               toggleTabContent(i);
+//             }
+//           });
+
+//           constructBtn.forEach((element, index) => {
+//             if (element === target) {
+//               toggleTabContent(index + 1);
+//             }
+//           });
+//         }
+//     });
+//   }); 
+
+// };
+
+// allAccordionMove();
+
+const accordionOne = () => {
+
+  const tabHeader = document.querySelectorAll('.panel-group')[0],
+        tab = tabHeader.querySelectorAll('.panel-heading'),
+        tabContent = tabHeader.querySelectorAll('.panel-collapse'),
+        constructBtn = tabHeader.querySelectorAll('.construct-btn');
+  
+  const toggleTabContent = (index) => {
+    for (let i = 0; i < tabContent.length; i++) {
+      if (index === i) {
+        tabContent[i].classList.add('in');
+      } else {
+        tabContent[i].classList.remove('in');
+      }
+    }
+  };
+  
+  tabHeader.addEventListener('click', (event) => {
+
+    let target = event.target.closest('.panel-heading, .construct-btn');
+        
+    
+      if (target) {
+        tab.forEach((item, i) => {
+          if (item === target) {
+            toggleTabContent(i);
+          }
+        });
+
+        constructBtn.forEach((element, index) => {
+          if (element === target) {
+            if (index === 3) {
+              toggleTabContent(0);
+            } else {
+              toggleTabContent(index + 1);
+            }
+          }
+        });
+      }
+  });
+
+};
+accordionOne();
+
+const accordionTwo = () => {
+
+  const tabHeader = document.querySelectorAll('.panel-group')[1],
+        tab = document.querySelectorAll('.panel-heading'),
+        tabContent = document.querySelectorAll('.panel-collapse');
+  
+  const toggleTabContent = (index) => {
+    for (let i = 0; i < tabContent.length; i++) {
+      if (index === i) {
+        tabContent[i].classList.add('in');
+      } else {
+        tabContent[i].classList.remove('in');
+      }
+    }
+  };
+  
+  tabHeader.addEventListener('click', (event) => {
+
+    let target = event.target.closest('.panel-heading');
+        
+    
+      if (target) {
+        tab.forEach((item, i) => {
+          if (item === target) {
+            toggleTabContent(i);
+          }
+        });
+      }
+  });
+
+};
+accordionTwo();
 
 
 
