@@ -67,6 +67,284 @@ const popupCall = () => {
 };
 popupCall();
 
+
+const popupDiscount = () => {
+
+  const diccountBtn = document.querySelectorAll('.discount-btn'),
+        diccountPopup = document.querySelector('.popup-discount'),
+        diccountPopupForm = diccountPopup.querySelector('form');
+
+
+    diccountBtn.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        diccountPopup.style.display = 'block';
+        popupOpenShow(0);
+      });
+    });
+
+  
+
+
+    const popupOpenShow = (step) => {
+
+      requestAnimationFrame(() => {
+  
+        if (step < 1) {
+          step += 0.05;
+          diccountPopup.style.opacity = `${step}`;
+          popupOpenShow(step);
+        } 
+  
+      });      
+    };
+  
+    const popupCloseShow = (step) => {
+  
+      requestAnimationFrame(() => {
+  
+        if (step > 0) {
+          if (step > 0.05) {
+            step -= 0.05;
+          } else {
+            step = 0;
+          }
+          
+          diccountPopup.style.opacity = `${step}`;
+          popupCloseShow(step);
+        } else if (step === 0) {
+          diccountPopup.style.display = 'none';
+          diccountPopupForm.reset();
+        }
+  
+      });  
+    };
+  
+    diccountPopup.addEventListener('click', (event) => {
+      let target = event.target;
+  
+      if (target.classList.contains('popup-close')) {
+        popupCloseShow(1);  
+      } else {
+        target = target.closest('.popup-content');
+        if (!target) {
+          popupCloseShow(1);
+        }
+      }
+    });
+
+};
+popupDiscount();
+
+
+const popupCheck = () => {
+
+  const checkBtn = document.querySelectorAll('.check-btn'),
+        checkPopup = document.querySelector('.popup-check'),
+        checkPopupForm = checkPopup.querySelector('form');
+
+
+    checkBtn.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        checkPopup.style.display = 'block';
+        popupOpenShow(0);
+      });
+    });
+
+  
+
+
+    const popupOpenShow = (step) => {
+
+      requestAnimationFrame(() => {
+  
+        if (step < 1) {
+          step += 0.05;
+          checkPopup.style.opacity = `${step}`;
+          popupOpenShow(step);
+        } 
+  
+      });      
+    };
+  
+    const popupCloseShow = (step) => {
+  
+      requestAnimationFrame(() => {
+  
+        if (step > 0) {
+          if (step > 0.05) {
+            step -= 0.05;
+          } else {
+            step = 0;
+          }
+          
+          checkPopup.style.opacity = `${step}`;
+          popupCloseShow(step);
+        } else if (step === 0) {
+          checkPopup.style.display = 'none';
+          checkPopupForm.reset();
+        }
+  
+      });  
+    };
+  
+    checkPopup.addEventListener('click', (event) => {
+      let target = event.target;
+  
+      if (target.classList.contains('popup-close')) {
+        popupCloseShow(1);  
+      } else {
+        target = target.closest('.popup-content');
+        if (!target) {
+          popupCloseShow(1);
+        }
+      }
+    });
+
+};
+popupCheck();
+
+
+const popupСonsultation = () => {
+
+  const сonsultationBtn = document.querySelectorAll('.director-btn'),
+        сonsultationPopup = document.querySelector('.popup-consultation'),
+        сonsultationPopupForm = сonsultationPopup.querySelector('form');
+
+
+    сonsultationBtn.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        сonsultationPopup.style.display = 'block';
+        popupOpenShow(0);
+      });
+    });
+
+  
+
+
+    const popupOpenShow = (step) => {
+
+      requestAnimationFrame(() => {
+  
+        if (step < 1) {
+          step += 0.05;
+          сonsultationPopup.style.opacity = `${step}`;
+          popupOpenShow(step);
+        } 
+  
+      });      
+    };
+  
+    const popupCloseShow = (step) => {
+  
+      requestAnimationFrame(() => {
+  
+        if (step > 0) {
+          if (step > 0.05) {
+            step -= 0.05;
+          } else {
+            step = 0;
+          }
+          
+          сonsultationPopup.style.opacity = `${step}`;
+          popupCloseShow(step);
+        } else if (step === 0) {
+          сonsultationPopup.style.display = 'none';
+          сonsultationPopupForm.reset();
+        }
+  
+      });  
+    };
+  
+    сonsultationPopup.addEventListener('click', (event) => {
+      let target = event.target;
+  
+      if (target.classList.contains('popup-close')) {
+        popupCloseShow(1);  
+      } else {
+        target = target.closest('.popup-content');
+        if (!target) {
+          popupCloseShow(1);
+        }
+      }
+    });
+
+};
+popupСonsultation();
+
+
+// const animatePopup = () => {
+
+//   const allBtn = document.querySelectorAll('button'),
+//         allPopup = document.querySelectorAll('.popup');
+        
+
+
+//     allBtn.forEach((elem) => {
+//       elem.addEventListener('click', () => {
+//         if (!elem.classList.contains('add-sentence-btn')) {
+//           popupOpenShow(0);
+//         }
+//       });
+//     });
+
+  
+
+
+//     const popupOpenShow = (step) => {
+
+//       requestAnimationFrame(() => {
+  
+//         if (step < 1) {
+//           step += 0.05;
+//           allPopup.forEach((elem) => {
+//             elem.style.opacity = `${step}`;
+//           });
+//           popupOpenShow(step);
+//         } 
+  
+//       });      
+//     };
+  
+//     const popupCloseShow = (step) => {
+  
+//       requestAnimationFrame(() => {
+  
+//         if (step > 0) {
+//           if (step > 0.05) {
+//             step -= 0.05;
+//           } else {
+//             step = 0;
+//           }
+          
+//           allPopup.style.opacity = `${step}`;
+//           popupCloseShow(step);
+//         } else if (step === 0) {
+//           allPopup.style.display = 'none';
+//           diccountPopupForm.reset();
+//         }
+  
+//       });  
+//     };
+  
+//     allPopup.forEach((elem) => {
+//       elem.addEventListener('click', (event) => {
+//         let target = event.target;
+    
+//         if (target.classList.contains('popup-close')) {
+//           popupCloseShow(1);  
+//         } else {
+//           target = target.closest('.popup-content');
+//           if (!target) {
+//             popupCloseShow(1);
+//           }
+//         }
+//       });
+//     });
+
+// };
+// animatePopup();
+
+
 const formsValidate = () => {
   const inputs = document.querySelectorAll('form input');
   console.log(inputs);
@@ -88,6 +366,7 @@ const formsValidate = () => {
 };
 formsValidate();
 
+
 const sendForm = () => {
 
   const errorMassage = 'Ошибка',
@@ -95,7 +374,7 @@ const sendForm = () => {
         successMassage = 'Отправлено';
 
   const forms = document.querySelectorAll('form'),
-        popup = document.querySelector('.popup');
+        popup = document.querySelectorAll('.popup');
         
 
   const statusMassage = document.createElement('div');
@@ -125,7 +404,9 @@ const sendForm = () => {
         setTimeout (() => {
           statusMassage.remove();
           setTimeout (() => {
-            popup.style.display = 'none';
+            popup.forEach((elem) => {
+              elem.style.display = 'none';
+            });
           }, 2000);
         }, 2000);
       };
@@ -167,6 +448,7 @@ const sendForm = () => {
   };
 };
 sendForm();
+
 
 // const allAccordionMove = () => {
 
@@ -255,6 +537,7 @@ const accordionOne = () => {
 };
 accordionOne();
 
+
 const accordionTwo = () => {
 
   const tabHeader = document.querySelectorAll('.panel-group')[1],
@@ -287,6 +570,38 @@ const accordionTwo = () => {
 
 };
 accordionTwo();
+
+
+const addSentence = () => {
+  const addSentenceBtn = document.querySelector('.add-sentence-btn'),
+        hidenBlocks = document.querySelectorAll('.hidden');
+
+  addSentenceBtn.addEventListener('click', () => {
+    hidenBlocks.forEach((elem) => {
+      elem.classList.remove('hidden');
+    });
+    addSentenceBtn.style.display = 'none';
+  });
+
+
+
+};
+addSentence();
+
+const calc = () => {
+
+  const onoffswitchInner = document.querySelector('.onoffswitch-inner').checked,
+        onoffswitchLabel = document.querySelector('onoffswitch-label'),
+        formControl = document.querySelectorAll('.form-control'),
+        input = document.getElementById('collapseFour');
+
+        onoffswitchInner.addEventListener('click', () => {
+          console.log(onoffswitchInner.value);
+        });
+
+
+};
+calc();
 
 
 
