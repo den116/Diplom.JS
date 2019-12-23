@@ -378,7 +378,7 @@ const sendForm = () => {
         
 
   const statusMassage = document.createElement('div');
-  statusMassage.style.cssText = 'font-size: 2rem; color: white';
+  statusMassage.style.cssText = 'font-size: 2rem; color: green';
 
   forms.forEach((form) => {
 
@@ -399,7 +399,7 @@ const sendForm = () => {
         if (response.status !== 200) {
           throw new Error('status network not 200');  
         }
-        statusMassage.style.cssText = 'color: green';
+        statusMassage.style.cssText = 'font-size: 2rem; color: green';
         statusMassage.textContent = successMassage;
         setTimeout (() => {
           statusMassage.remove();
@@ -412,7 +412,7 @@ const sendForm = () => {
       };
 
       const notGood = (error) => {
-        statusMassage.style.cssText = 'color: red';
+        statusMassage.style.cssText = 'font-size: 2rem; color: red';
         statusMassage.textContent = errorMassage;
         setTimeout (() => {
           statusMassage.remove();
@@ -541,8 +541,8 @@ accordionOne();
 const accordionTwo = () => {
 
   const tabHeader = document.querySelectorAll('.panel-group')[1],
-        tab = document.querySelectorAll('.panel-heading'),
-        tabContent = document.querySelectorAll('.panel-collapse');
+        tab = tabHeader.querySelectorAll('.panel-heading'),
+        tabContent = tabHeader.querySelectorAll('.panel-collapse');
   
   const toggleTabContent = (index) => {
     for (let i = 0; i < tabContent.length; i++) {
@@ -590,16 +590,24 @@ addSentence();
 
 const calc = () => {
 
-  const onoffswitchInner = document.querySelector('.onoffswitch-inner').checked,
-        onoffswitchLabel = document.querySelector('onoffswitch-label'),
+  const myonoffswitchTwo = document.getElementById('myonoffswitch-two'),
+        onoffswitchLabel = document.querySelector('.onoffswitch-label'),
         formControl = document.querySelectorAll('.form-control'),
         input = document.getElementById('collapseFour');
 
-        onoffswitchInner.addEventListener('click', () => {
-          console.log(onoffswitchInner.value);
-        });
 
+    
 
+  myonoffswitchTwo.addEventListener('change', () => {
+    if (myonoffswitchTwo.checked) {
+      console.log('вкл');
+    } else  {    
+      console.log('выкл');
+    }
+  });
+      
+  
+        
 };
 calc();
 
