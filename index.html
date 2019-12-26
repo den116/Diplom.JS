@@ -259,7 +259,7 @@
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
                                 <input id="meters" type="text">
-                                <button class="button discount-btn construct-btn">Получить расчет и скидку</button>
+                                <button class="button discount-btn send-calc-btn construct-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
                     </div>
@@ -444,8 +444,8 @@
             <div class="col-lg-6 col-md-6">
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
-                <form class="director-form">
-                    <input type="text" name="user_quest" placeholder="Введите свой вопрос" required>
+                <form class="director-form" id="director-form">
+                    <input class="input-question" type="text" name="user_quest" placeholder="Введите свой вопрос" required>
                     <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
                         консультацию
                     </button>
@@ -506,7 +506,7 @@
     </div>
 </div>
 
-<div class="popup-discount popup">
+<div class="popup-discount popup popup-calc">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
@@ -569,7 +569,7 @@
     </div>
 </div>
 
-<script src="./script/script.js"></script>
+<script src="./dist/main.js"></script>
 
 </body>
 </html>
